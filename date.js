@@ -1,5 +1,5 @@
 const today = new Date()
-console.log(today)
+console.log('today is' + today)
 
 const rightNow1 = new Date('April 07, 2021 00:00:00')
 console.log(rightNow1)
