@@ -1,5 +1,4 @@
 
-//this file is invalid, because the js code should be written in the same file as the testing file.
 
 
 function makePersonObject (firstname, age){
@@ -7,4 +6,12 @@ function makePersonObject (firstname, age){
         name: firstname,
         age:age,
     }
+}
+function divided(num1, num2){
+    return num1/num2;
+}
+
+module.exports = {
+    divided: divided,
+    makePersonObject: makePersonObject,
 }
