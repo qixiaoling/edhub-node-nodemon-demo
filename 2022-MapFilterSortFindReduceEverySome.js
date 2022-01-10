@@ -94,6 +94,7 @@ const byName = characters.sort((a,b)=>{
         return 1;
     }
 });
+
 console.log(byName);
 //4. Sort by gender
 const byGender = characters.sort((a,b)=>{
@@ -104,3 +105,108 @@ const byGender = characters.sort((a,b)=>{
     }
 })
 console.log(byGender);
+
+//***REDUCE***
+//1. Get total mass of all characters
+const totalMass = characters.reduce((accumulator, currentItem)=>{
+    return accumulator + currentItem.mass;
+}, 0);
+//2. Get total height of all characters
+const totalHeight = characters.reduce((acc, currentItem)=>{
+    return acc + currentItem.height;
+}, 0)
+//3. Get total number of characters by eye color
+const totalNrPerEyeColor = characters.reduce((acc, cur)=>{
+   const color = cur.eye_color;
+   if(acc[color]) {//in this case, we cannot just simple add a property, as we that property is a variable!!!
+       acc[color] ++;
+   }else{
+       acc[color] = 1;
+   }
+   return acc;
+},{})
+console.log(totalNrPerEyeColor);
+
+//there are two ways to add key/value pair to an object:
+//////////////3.1 // program to add a key/value pair to an object///////////////////////
+//
+// const person = {
+//     name: 'Monica',
+//     age: 22,
+//     gender: 'female'
+// }
+//
+// // add a key/value pair
+// person.height = 5.4;
+//
+// console.log(person);
+// {
+//     name: "Monica",
+//         age: 22,
+//     gender: "female",
+//     height: 5.4
+// }
+
+//////////////////////// 3.2 program to add a key/value pair to an object///////////////////////////////
+
+// const person = {
+//     name: 'Monica',
+//     age: 22,
+//     gender: 'female'
+// }
+//
+// // add a key/value pair
+// person['height'] = 5.4;
+//
+// console.log(person);
+//
+// {
+//     name: "Monica",
+//         age: 22,
+//     gender: "female",
+//     height: 5.4
+// }
+
+
+
+//4. Get total number of characters in all the character names
+const totalChar = characters.reduce((acc, cur)=>{
+   return acc + cur.name.length;
+},0)
+console.log(totalChar);
+
+const totalCharAsObj = characters.reduce((acc, cur)=>{
+    //this code is not working b/c you cannot just create a property.
+    //not like the example above, where the color property is actually defined as a REAL property that
+    //comes from the cur.
+    return  acc.number + cur.name.length;
+
+},{})
+console.log(totalCharAsObj)
+//***EVERY***
+//1. Does every character have blue eyes?
+const allBueEyes = characters.every((character)=> character.eye_color === 'blue');
+console.log(allBueEyes);
+//2. Does every character have mass more than 40?
+const allMassMoreThan40 = characters.every((character)=> character.mass > 40);
+console.log(allMassMoreThan40);
+//3. Is every character shorter than 200?
+const allShorterThan200 = characters.every((character)=> character.height < 200);
+console.log(allShorterThan200);
+//4. Is every character male?
+const allMale = characters.every((character)=> character.gender === 'male');
+console.log(allMale);
+
+//***SOME***
+//1. Is there at least one male character?
+const atLeastOneMale = characters.some((character)=> character.gender === 'male');
+console.log(atLeastOneMale);
+//2. Is there at least one character with blue eyes?
+const atLeastOneBlueEyes = characters.some((character)=> character.eye_color === 'blue');
+console.log(atLeastOneBlueEyes);
+//3. Is there at least one character taller than 210?
+const atLeastOneTallerThan210 = characters.some((character)=> character.height > 210);
+console.log(atLeastOneTallerThan210);
+//4. Is there at least one character that has mass less than 50?
+const atLeastOneMassLessThan50 = characters.some((character)=> character.mass < 50);
+console.log(atLeastOneMassLessThan50);
