@@ -210,3 +210,5 @@ console.log(atLeastOneTallerThan210);
 //4. Is there at least one character that has mass less than 50?
 const atLeastOneMassLessThan50 = characters.some((character)=> character.mass < 50);
 console.log(atLeastOneMassLessThan50);
+
+
